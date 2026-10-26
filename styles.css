@@ -1,0 +1,130 @@
+
+/* AI-assisted code: initial styling for the Skill Swap homepage. */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #263238;
+    background-color: #f5f8fa;
+}
+
+.container {
+    width: min(1100px, 90%);
+    margin: 0 auto;
+}
+
+header {
+    padding: 24px 0;
+    background-color: #173f35;
+    color: white;
+}
+
+header h1 {
+    margin: 0;
+}
+
+
+/* Navigation styling for the Skill Swap homepage */
+nav {
+    margin-top: 16px;
+}
+
+nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+nav a {
+    display: inline-block;
+    padding: 10px 16px;
+    border-radius: 6px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.2s ease;
+}
+
+nav a:hover,
+nav a:focus-visible {
+    background-color: #246b52;
+    text-decoration: underline;
+}
+
+.hero {
+    padding: 80px 0;
+    text-align: center;
+    background-color: #e1eee7;
+}
+
+.button {
+    display: inline-block;
+    padding: 12px 22px;
+    border-radius: 6px;
+    background-color: #246b52;
+    color: white;
+    text-decoration: none;
+}
+
+main section {
+    padding-top: 32px;
+    padding-bottom: 32px;
+}
+
+footer {
+    margin-top: 40px;
+    padding: 20px 0;
+    background-color: #173f35;
+    color: white;
+    text-align: center;
+}
+
+/* AI-assisted code: responsive styling for skill cards. */
+.skill-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 24px;
+    margin-top: 24px;
+}
+
+.skill-card {
+    padding: 24px;
+    border: 1px solid #d5e1da;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+}
+
+.skill-card h3 {
+    margin-top: 0;
+    color: #173f35;
+}
+
+.skill-button {
+    padding: 10px 14px;
+    border: none;
+    border-radius: 6px;
+    background-color: #246b52;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.skill-button:hover,
+.skill-button:focus-visible {
+    background-color: #173f35;
+}
+
+.skill-details {
+    margin-bottom: 0;
+    padding-top: 10px;
+}
