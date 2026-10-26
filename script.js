@@ -1,7 +1,8 @@
 
-/* AI-assisted code: interactive details and cost calculator for Skill Swap. */
+/* AI-assisted code: interactive details, cost calculator, and skill matching. */
 console.log("Welcome to Skill Swap!");
 
+// Show and hide skill details
 const skillButtons = document.querySelectorAll(".skill-button");
 
 skillButtons.forEach((button) => {
@@ -14,6 +15,7 @@ skillButtons.forEach((button) => {
     });
 });
 
+// Cost calculator
 const costForm = document.querySelector("#cost-form");
 const hourlyRateInput = document.querySelector("#hourly-rate");
 const hoursInput = document.querySelector("#hours");
@@ -39,4 +41,66 @@ costForm.addEventListener("submit", (event) => {
 
     const total = hourlyRate * hours;
     costResult.textContent = `Total cost: $${total.toFixed(2)}`;
+});
+
+// Find My Match
+const matchForm = document.querySelector("#match-form");
+const matchCategoryInput = document.querySelector("#match-category");
+const maxPriceInput = document.querySelector("#max-price");
+const matchResults = document.querySelector("#match-results");
+
+matchForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const category = matchCategoryInput.value;
+    const maxPrice = Number(maxPriceInput.value);
+
+    if (
+        maxPriceInput.value.trim() === "" ||
+        !Number.isFinite(maxPrice) ||
+        maxPrice < 0
+    ) {
+        matchResults.textContent = "Please enter a valid, non-negative budget.";
+        return;
+    }
+
+    const skillCards = Array.from(
+        document.querySelectorAll("#skill-list .skill-card")
+    );
+
+    const matchingCards = skillCards.filter((card) => {
+        const skillCategory = card.dataset.category;
+        const skillPrice = Number(card.dataset.price);
+
+        const categoryMatches =
+            category === "All" || skillCategory === category;
+
+        return categoryMatches && skillPrice <= maxPrice;
+    });
+
+    matchResults.replaceChildren();
+
+    if (matchingCards.length === 0) {
+        matchResults.textContent =
+            "No skills match your category and budget. Try changing your preferences.";
+        return;
+    }
+
+    matchingCards.forEach((card) => {
+        const resultCard = card.cloneNode(true);
+        resultCard.querySelector(".skill-details").hidden = true;
+
+        const detailsButton = resultCard.querySelector(".skill-button");
+        detailsButton.textContent = "Show Details";
+
+        detailsButton.addEventListener("click", () => {
+            const details = resultCard.querySelector(".skill-details");
+            details.hidden = !details.hidden;
+            detailsButton.textContent = details.hidden
+                ? "Show Details"
+                : "Hide Details";
+        });
+
+        matchResults.appendChild(resultCard);
+    });
 });
