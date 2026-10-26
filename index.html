@@ -9,7 +9,6 @@
     <script src="script.js" defer></script>
 </head>
 <body>
-    <!-- AI-assisted code: semantic homepage structure for the Skill Swap project. -->
     <header>
         <div class="container">
             <h1>Skill Swap</h1>
@@ -20,6 +19,7 @@
                     <li><a href="#home">Home</a></li>
                     <li><a href="#skills">Browse Skills</a></li>
                     <li><a href="#cost-calculator">Cost Calculator</a></li>
+                    <li><a href="#find-match">Find My Match</a></li>
                     <li><a href="#offer">Offer Skills</a></li>
                     <li><a href="#about">About</a></li>
                 </ul>
@@ -31,7 +31,6 @@
         <section class="hero" id="home">
             <div class="container">
                 <h2>Everyone Has Something to Teach</h2>
-                <!-- AI-assisted code: introductory message for homepage visitors. -->
                 <p>Learn new skills, share your experience, and connect with your community.</p>
                 <p>Connect with people in your community, share what you know,
                     and learn skills from others.</p>
@@ -44,8 +43,7 @@
             <p>Explore opportunities to learn from people who are ready to share.</p>
 
             <div id="skill-list" class="skill-grid">
-                <!-- AI-assisted code: sample skill cards for the Skill Swap project. -->
-                <article class="skill-card">
+                <article class="skill-card" data-category="Music" data-price="15">
                     <h3>Beginner Guitar</h3>
                     <p>Learn basic chords and play your first songs.</p>
                     <p><strong>Price:</strong> $15 per lesson</p>
@@ -54,7 +52,7 @@
                     <p class="skill-details" hidden>Lessons are beginner-friendly and include practice tips.</p>
                 </article>
 
-                <article class="skill-card">
+                <article class="skill-card" data-category="Programming" data-price="20">
                     <h3>Web Design Basics</h3>
                     <p>Learn how to build a simple webpage with HTML and CSS.</p>
                     <p><strong>Price:</strong> $20 per lesson</p>
@@ -63,7 +61,7 @@
                     <p class="skill-details" hidden>Bring a laptop so you can practice as you learn.</p>
                 </article>
 
-                <article class="skill-card">
+                <article class="skill-card" data-category="Outdoors" data-price="10">
                     <h3>Fishing Fundamentals</h3>
                     <p>Learn basic knots, bait selection, and fishing techniques.</p>
                     <p><strong>Price:</strong> $10 per lesson</p>
@@ -72,7 +70,7 @@
                     <p class="skill-details" hidden>Includes tips for choosing tackle and finding fish.</p>
                 </article>
 
-                <article class="skill-card">
+                <article class="skill-card" data-category="Arts" data-price="18">
                     <h3>Photography Basics</h3>
                     <p>Improve your photos with simple composition techniques.</p>
                     <p><strong>Price:</strong> $18 per lesson</p>
@@ -83,7 +81,6 @@
             </div>
         </section>
 
-        <!-- Cost calculator added for the calculate-cost feature. -->
         <section class="container" id="cost-calculator">
             <h2>Calculate Skill Costs</h2>
             <p>Estimate the total cost of a lesson based on its hourly rate and duration.</p>
@@ -91,32 +88,45 @@
             <form id="cost-form">
                 <div>
                     <label for="hourly-rate">Hourly Rate ($)</label>
-                    <input
-                        type="number"
-                        id="hourly-rate"
-                        min="0"
-                        step="0.01"
-                        value="20"
-                        required
-                    >
+                    <input type="number" id="hourly-rate" min="0" step="0.01" value="20" required>
+                </div>
+                <div>
+                    <label for="hours">Number of Hours</label>
+                    <input type="number" id="hours" min="0" step="0.25" value="1" required>
+                </div>
+                <button type="submit" class="button">Calculate Total</button>
+            </form>
+            <p id="cost-result" aria-live="polite">Your total will appear here.</p>
+        </section>
+
+        <!-- Skill matching feature -->
+        <section class="container" id="find-match">
+            <h2>Find My Match</h2>
+            <p>Choose a category and budget to find skills that fit your needs.</p>
+
+            <form id="match-form">
+                <div>
+                    <label for="match-category">Skill Category</label>
+                    <select id="match-category" required>
+                        <option value="All">All Categories</option>
+                        <option value="Programming">Programming</option>
+                        <option value="Music">Music</option>
+                        <option value="Outdoors">Outdoors</option>
+                        <option value="Arts">Arts</option>
+                    </select>
                 </div>
 
                 <div>
-                    <label for="hours">Number of Hours</label>
-                    <input
-                        type="number"
-                        id="hours"
-                        min="0"
-                        step="0.25"
-                        value="1"
-                        required
-                    >
+                    <label for="max-price">Maximum Budget ($)</label>
+                    <input type="number" id="max-price" min="0" step="0.01" value="20" required>
                 </div>
 
-                <button type="submit" class="button">Calculate Total</button>
+                <button type="submit" class="button">Find Matching Skills</button>
             </form>
 
-            <p id="cost-result" aria-live="polite">Your total will appear here.</p>
+            <div id="match-results" class="skill-grid" aria-live="polite">
+                <p>Choose your preferences and select Find Matching Skills.</p>
+            </div>
         </section>
 
         <section class="container" id="offer">
