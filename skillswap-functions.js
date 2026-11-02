@@ -1,5 +1,3 @@
-
-
 function filterSkillsByCategory(skills, category) {
   if (category === 'All') {
     return skills;
@@ -12,7 +10,24 @@ function calculateTotalCosts(hourlyRate, hours) {
   return hourlyRate * hours;
 }
 
-module.exports = {
-  filterSkillsByCategory,
-  calculateTotalCosts
-};
+function matchSkillsToUser(skills, userSkills) {
+  return skills.filter(skill =>
+    userSkills.includes(skill.category)
+  );
+}
+
+// Make functions available to the browser.
+if (typeof window !== 'undefined') {
+  window.filterSkillsByCategory = filterSkillsByCategory;
+  window.calculateTotalCosts = calculateTotalCosts;
+  window.matchSkillsToUser = matchSkillsToUser;
+}
+
+// Make functions available to Jest.
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = {
+    filterSkillsByCategory,
+    calculateTotalCosts,
+    matchSkillsToUser
+  };
+}

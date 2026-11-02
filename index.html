@@ -6,10 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Skill Swap | Share What You Know</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
+<script src="api-service.js" defer></script>
+<script src="skillswap-functions.js" defer></script>
+<script src="script.js" defer></script>
 </head>
 <body>
-    <!-- AI-assisted code: semantic homepage structure for the Skill Swap project. -->
     <header>
         <div class="container">
             <h1>Skill Swap</h1>
@@ -31,7 +32,6 @@
         <section class="hero" id="home">
             <div class="container">
                 <h2>Everyone Has Something to Teach</h2>
-                <!-- AI-assisted code: introductory message for homepage visitors. -->
                 <p>Learn new skills, share your experience, and connect with your community.</p>
                 <p>Connect with people in your community, share what you know,
                     and learn skills from others.</p>
@@ -44,46 +44,10 @@
             <p>Explore opportunities to learn from people who are ready to share.</p>
 
             <div id="skill-list" class="skill-grid">
-                <!-- AI-assisted code: sample skill cards for the Skill Swap project. -->
-                <article class="skill-card">
-                    <h3>Beginner Guitar</h3>
-                    <p>Learn basic chords and play your first songs.</p>
-                    <p><strong>Price:</strong> $15 per lesson</p>
-                    <p><strong>Provider:</strong> Alex</p>
-                    <button class="skill-button" type="button">Show Details</button>
-                    <p class="skill-details" hidden>Lessons are beginner-friendly and include practice tips.</p>
-                </article>
-
-                <article class="skill-card">
-                    <h3>Web Design Basics</h3>
-                    <p>Learn how to build a simple webpage with HTML and CSS.</p>
-                    <p><strong>Price:</strong> $20 per lesson</p>
-                    <p><strong>Provider:</strong> Jordan</p>
-                    <button class="skill-button" type="button">Show Details</button>
-                    <p class="skill-details" hidden>Bring a laptop so you can practice as you learn.</p>
-                </article>
-
-                <article class="skill-card">
-                    <h3>Fishing Fundamentals</h3>
-                    <p>Learn basic knots, bait selection, and fishing techniques.</p>
-                    <p><strong>Price:</strong> $10 per lesson</p>
-                    <p><strong>Provider:</strong> Casey</p>
-                    <button class="skill-button" type="button">Show Details</button>
-                    <p class="skill-details" hidden>Includes tips for choosing tackle and finding fish.</p>
-                </article>
-
-                <article class="skill-card">
-                    <h3>Photography Basics</h3>
-                    <p>Improve your photos with simple composition techniques.</p>
-                    <p><strong>Price:</strong> $18 per lesson</p>
-                    <p><strong>Provider:</strong> Taylor</p>
-                    <button class="skill-button" type="button">Show Details</button>
-                    <p class="skill-details" hidden>Practice framing, lighting, and taking sharper photos.</p>
-                </article>
+                <p>Loading skills...</p>
             </div>
         </section>
 
-        <!-- Cost calculator added for the calculate-cost feature. -->
         <section class="container" id="cost-calculator">
             <h2>Calculate Skill Costs</h2>
             <p>Estimate the total cost of a lesson based on its hourly rate and duration.</p>
@@ -91,26 +55,14 @@
             <form id="cost-form">
                 <div>
                     <label for="hourly-rate">Hourly Rate ($)</label>
-                    <input
-                        type="number"
-                        id="hourly-rate"
-                        min="0"
-                        step="0.01"
-                        value="20"
-                        required
-                    >
+                    <input type="number" id="hourly-rate" min="0"
+                        step="0.01" value="20" required>
                 </div>
 
                 <div>
                     <label for="hours">Number of Hours</label>
-                    <input
-                        type="number"
-                        id="hours"
-                        min="0"
-                        step="0.25"
-                        value="1"
-                        required
-                    >
+                    <input type="number" id="hours" min="0"
+                        step="0.25" value="1" required>
                 </div>
 
                 <button type="submit" class="button">Calculate Total</button>
@@ -121,8 +73,33 @@
 
         <section class="container" id="offer">
             <h2>Share Your Knowledge</h2>
-            <p>Have a skill you would like to teach? Skill Swap helps you connect
-                with people who want to learn.</p>
+            <p>Have a skill you would like to teach? Add it to Skill Swap!</p>
+
+            <form id="skill-form">
+                <div>
+                    <label for="skill-title">Skill Title</label>
+                    <input type="text" id="skill-title" required>
+                </div>
+
+                <div>
+                    <label for="skill-category">Category</label>
+                    <input type="text" id="skill-category" required>
+                </div>
+
+                <div>
+                    <label for="skill-price">Price ($)</label>
+                    <input type="number" id="skill-price" min="0"
+                        step="0.01" required>
+                </div>
+
+                <div>
+                    <label for="skill-description">Description</label>
+                    <textarea id="skill-description" required></textarea>
+                </div>
+
+                <button type="submit" class="button">Add Skill</button>
+                <p id="skill-message" aria-live="polite"></p>
+            </form>
         </section>
 
         <section class="container" id="about">
